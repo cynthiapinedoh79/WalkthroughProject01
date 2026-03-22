@@ -1,3 +1,5 @@
+import uuid
+
 import streamlit as st
 import numpy as np
 import pandas as pd
@@ -30,7 +32,8 @@ def plot_predictions_probabilities(pred_proba, pred_class):
         y=prob_per_class['Probability'],
         range_y=[0, 1],
         width=600, height=300, template='seaborn')
-    st.plotly_chart(fig)
+
+    st.plotly_chart(fig, key=f"pred_plot_{pred_class}_{uuid.uuid4().hex}")
 
 
 def resize_input_image(img, version):
